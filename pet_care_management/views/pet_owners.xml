@@ -1,19 +1,81 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
+    <record id="view_pet_owner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="codice_fiscale"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pet_owner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <div class="oe_title">
+                            <field name="reference" readonly="1"/>
+                        </div>
+                    </header>
+                    <group>
+                        <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                        <group string="Contact">
+                            <field name="name" required="1"/>
+                            <field name="codice_fiscale" required="1"/>
+                            <field name="mobile" widget="phone" required="1"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                        <group name="address" string="Address">
+                            <field name="city" class="o_address_city"/>
+                            <field name="street" class="o_address_street"/>
+                            <field name="zip" class="o_address_city" string="CAP"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="pets" string="Pets" autofocus="autofocus">
+                            <field name="pets">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="age"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
     <record id="action_pet_owners" model="ir.actions.act_window">
         <field name="name">Pet Owners</field>
         <field name="res_model">res.partner</field>
-       <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Add new pet owner
             </p>
         </field>
+        <field name="context">{}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('pet_care_management.view_pet_owner_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('pet_care_management.view_pet_owner_form')})]"/>
     </record>
 
     <menuitem id="menu_pet_owner"
               name="Pet Owners"
-              parent="menu_pet_care"
-              action="action_pet_owners"
+              parent="menu_pet_owner_root"
+              action="pet_care_management.action_pet_owners"
               />
 </odoo>

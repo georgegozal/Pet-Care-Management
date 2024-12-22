@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record id="action_pet_care_management" model="ir.actions.act_window">
-        <field name="name">Pet Care</field>
-        <field name="res_model">pet.pet</field>
-       <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add new pet
-            </p>
-        </field>
-    </record>
-
     <menuitem id="menu_pet_care_root"
               name="Pet Care Management"
               sequence="35"
               />
 
-    <menuitem id="menu_pet_care"
-              name="Pet Care"
+    <menuitem id="menu_pet_root"
+              name="Pets"
               parent="menu_pet_care_root"
               />
 
+    <menuitem id="menu_pet_owner_root"
+              name="Pet Owner"
+              parent="menu_pet_care_root"
+              />
 </odoo>

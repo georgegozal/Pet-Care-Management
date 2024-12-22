@@ -8,8 +8,9 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        'data/sequences.xml',
         'views/base.xml',
         'views/pets.xml',
-        'views/pet_owners.xml',
+        'views/pet_owners.xml'
     ],
 }
