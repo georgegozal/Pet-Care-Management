@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="menu_pets"
+              name="Pets"
+              parent="menu_pet_care"
+              action="action_pet_care_management"
+              />
+</odoo>
