@@ -9,6 +9,9 @@
                 <field name="reference"/>
                 <field name="name"/>
                 <field name="age"/>
+                <field name="pet_type"/>
+                <field name="breed"/>
+                <field name="sex"/>
                 <field name="owner"/>
             </tree>
         </field>
@@ -24,11 +27,17 @@
                         <field name="reference" readonly="1"/>
                     </div>
                     <group>
-<!--                        <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>-->
+                        <field name="image_1920"
+                               widget='image'
+                               class="oe_avatar"
+                               />
                         <group string="Pet Info">
                             <field name="name" required="1"/>
                             <field name="age"/>
-                            <field name="owner" required="1"/>
+                            <field name="pet_type"/>
+                            <field name="breed"/>
+                            <field name="sex"/>
+                            <field name="owner" required="1" readonly="context.get('make_readonly', False)"/>
                         </group>
                     </group>
                 </sheet>
@@ -37,6 +46,26 @@
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
             </form>
+        </field>
+    </record>
+
+    <record id="view_pet_search" model="ir.ui.view">
+        <field name="name">pet.pet.search</field>
+        <field name="model">pet.pet</field>
+        <field name="arch" type="xml">
+            <search string="Pets">
+                <field name="name"/>
+                <field name="pet_type"/>
+                <field name="breed"/>
+                <field name="sex"/>
+                <field name="owner"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter string="Sex" name="sex" context="{'group_by':'sex'}"/>
+                    <filter string="Owner" name="owner" context="{'group_by':'owner'}"/>
+                    <filter string="Pet Type" name="pet_type" context="{'group_by':'pet_type'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

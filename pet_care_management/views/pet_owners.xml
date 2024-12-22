@@ -41,7 +41,7 @@
                     </group>
                     <notebook colspan="4">
                         <page name="pets" string="Pets" autofocus="autofocus">
-                            <field name="pets">
+                            <field name="pets" context="{'make_readonly': True}">
                                 <tree>
                                     <field name="name"/>
                                     <field name="age"/>

@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_pet_pet,pet.pet,model_pet_pet,,1,1,1,1
+access_pet_type,pet.type,model_pet_type,,1,1,1,1
