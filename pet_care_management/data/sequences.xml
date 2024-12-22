@@ -12,7 +12,7 @@
 
         <record id="seq_pet" model="ir.sequence">
             <field name="name">Pet Sequence</field>
-            <field name="code">pet.pet</field>
+            <field name="code">pc.pet</field>
             <field name="prefix">PT</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>

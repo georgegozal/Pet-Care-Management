@@ -20,7 +20,7 @@ class PetOwners(models.Model):
         unique=True
     )
     pets = fields.One2many(
-        'pet.pet',
+        'pc.pet',
         'owner',
         string="Pets"
     )

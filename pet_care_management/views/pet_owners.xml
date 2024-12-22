@@ -8,7 +8,7 @@
             <tree>
                 <field name="name"/>
                 <field name="codice_fiscale"/>
-                <field name="phone"/>
+                <field name="mobile"/>
                 <field name="email"/>
             </tree>
         </field>
@@ -42,15 +42,18 @@
                     <notebook colspan="4">
                         <page name="pets" string="Pets" autofocus="autofocus">
                             <field name="pets" context="{'make_readonly': True}">
-                                <tree>
+                                <tree delete="0">
                                     <field name="name"/>
                                     <field name="age"/>
+                                    <field name="sex"/>
+                                    <field name="pet_type"/>
+                                    <field name="breed"/>
                                 </tree>
                             </field>
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
+                <div class="oe_chatter" groups="!pet_care_management.group_pet_manager">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
