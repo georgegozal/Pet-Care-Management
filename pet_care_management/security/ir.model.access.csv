@@ -2,3 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_pet.pet,pet.pet,model_pet_pet,,1,1,1,1
 access_pet_type,pet.type,model_pet_type,,1,1,1,1
 access_pet_appointment,pet_appointment,model_pet_appointment,,1,1,1,1
+access_pet_passport,pet_passport,model_pet_passport,,1,1,1,1
+access_pet_vaccination,pet_vaccination,model_pet_vaccination,,1,1,1,1

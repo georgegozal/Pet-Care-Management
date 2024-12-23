@@ -30,9 +30,16 @@ class Pets(models.Model):
     ],string='Sex')
 
     appointments = fields.One2many(
-        'pet.appointment',
-        'pet',
+        comodel_name='pet.appointment',
+        inverse_name='pet',
         string='Appointments'
+    )
+
+    passport = fields.One2many(
+        comodel_name='pet.passport',
+        inverse_name='pet',
+        string='Health Card',
+        help="Health card (passport) records for this pet."
     )
 
     @api.model

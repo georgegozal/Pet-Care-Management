@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_pet_passport_tree" model="ir.ui.view">
+        <field name="name">pet.passport.tree</field>
+        <field name="model">pet.passport</field>
+        <field name="arch" type="xml">
+            <tree string="Health Cards">
+                <field name="reference"/>
+                <field name="pet"/>
+                <field name="owner"/>
+                <field name="microchip_id"/>
+                <field name="create_date" string="Date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pet_passport_form" model="ir.ui.view">
+        <field name="name">pet.passport.form</field>
+        <field name="model">pet.passport</field>
+        <field name="arch" type="xml">
+            <form string="Pet Health Card">
+                <sheet>
+                    <group>
+                        <field name="pet"/>
+                        <field name="owner"/>
+                        <field name="microchip_id"/>
+                        <field name="allergies"/>
+                        <field name="note"/>
+                    </group>
+                    <notebook>
+                        <page string="Vaccinations">
+                            <field name="vaccinations">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="vaccination_type"/>
+                                    <field name="vaccination_date"/>
+                                    <field name="next_due_date"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_health_card" model="ir.actions.act_window">
+        <field name="name">Health Card</field>
+        <field name="res_model">pet.passport</field>
+       <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new Health Card
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_health_card"
+              name="Health Card"
+              parent="menu_pet_root"
+              action="pet_care_management.action_health_card"
+              />
+</odoo>

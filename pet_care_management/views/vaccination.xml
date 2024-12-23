@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_pet_vaccination_tree" model="ir.ui.view">
+        <field name="name">pet.vaccination.tree</field>
+        <field name="model">pet.vaccination</field>
+        <field name="arch" type="xml">
+            <tree string="Vaccinations">
+                <field name="passport"/>
+                <field name="name"/>
+                <field name="vaccination_type"/>
+                <field name="create_date" string="Date"/>
+                <field name="next_due_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -15,10 +15,12 @@ class PetAppointment(models.Model):
         default=lambda self: 'New'
     )
     pet = fields.Many2one(
-        'pet.pet',
+        comodel_name='pet.pet',
+        inverse_name='passport',
         string="Pet",
         required=True
     )
+
     owner = fields.Many2one(
         'res.partner',
         string="Owner",

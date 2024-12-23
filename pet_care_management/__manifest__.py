@@ -14,7 +14,9 @@
         'views/base.xml',
         'views/pets.xml',
         'views/pet_owners.xml',
-        'views/appointments.xml'
+        'views/appointments.xml',
+        'views/health_card.xml',
+        # 'views/vaccination.xml'
     ],
     'qweb': [],
     'images': [],
