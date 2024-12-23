@@ -13,7 +13,8 @@
         'views/groups.xml',
         'views/base.xml',
         'views/pets.xml',
-        'views/pet_owners.xml'
+        'views/pet_owners.xml',
+        'views/appointments.xml'
     ],
     'qweb': [],
     'images': [],

@@ -2,8 +2,8 @@
 <odoo>
 
     <record id="view_pet_tree" model="ir.ui.view">
-        <field name="name">pc.pet.tree</field>
-        <field name="model">pc.pet</field>
+        <field name="name">pet.pet.tree</field>
+        <field name="model">pet.pet</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="reference"/>
@@ -18,8 +18,8 @@
     </record>
 
     <record id="view_pet_form" model="ir.ui.view">
-        <field name="name">pc.pet.form</field>
-        <field name="model">pc.pet</field>
+        <field name="name">pet.pet.form</field>
+        <field name="model">pet.pet</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -43,6 +43,18 @@
                             />
                         </group>
                     </group>
+                    <notebook>
+                        <page name="appointments" string="Appointments">
+                            <field name="appointments">
+                                <tree delete="0">
+                                    <field name="reference"/>
+                                    <field name="appointment_type"/>
+                                    <field name="appointment_date"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter" groups="!pet_care_management.group_pet_manager">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -53,8 +65,8 @@
     </record>
 
     <record id="view_pet_search" model="ir.ui.view">
-        <field name="name">pc.pet.search</field>
-        <field name="model">pc.pet</field>
+        <field name="name">pet.pet.search</field>
+        <field name="model">pet.pet</field>
         <field name="arch" type="xml">
             <search string="Pets">
                 <field name="name"/>
@@ -74,7 +86,7 @@
 
     <record id="action_pets" model="ir.actions.act_window">
         <field name="name">Pet Care</field>
-        <field name="res_model">pc.pet</field>
+        <field name="res_model">pet.pet</field>
        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="module_category_pc_groups" model="ir.module.category">
+        <field name="name">Pet Care Management</field>
+        <field name="description">Pet Care Management</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <record id="group_pet_doctor" model="res.groups">
+        <field name="name">Pet Doctor</field>
+        <field name="category_id" ref="pet_care_management.module_category_pc_groups"/>
+        <field name="comment">Pet Doctor</field>
+    </record>
+
+    <record id="group_pet_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="pet_care_management.module_category_pc_groups"/>
+        <field name="comment">Manager</field>
+    </record>
+
+</odoo>

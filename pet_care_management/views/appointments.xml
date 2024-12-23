@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_appointment_tree" model="ir.ui.view">
+        <field name="name">pet.appointment.tree</field>
+        <field name="model">pet.appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="pet"/>
+                <field name="owner"/>
+                <field name="appointment_type"/>
+                <field name="appointment_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_appointment_form" model="ir.ui.view">
+        <field name="name">pet.appointment.form</field>
+        <field name="model">pet.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_done"
+                            name="action_done"
+                            string="Done"
+                            class="btn-primary"
+                            type="object"
+                            invisible="state != 'scheduled'"/>
+                    <button id="button_cancel"
+                            name="action_cancel"
+                            string="Cancel"
+                            confirm="Are you sure that you need to cancel ?"
+                            type="object"
+                            invisible="state != 'scheduled'"/>
+                    <field name="state" widget="statusbar" invisible="state != 'scheduled'" statusbar_visible="scheduled,cancel,done"/>
+                    <field name="state" widget="statusbar" invisible="state != 'done'" statusbar_visible="scheduled,done"/>
+                    <field name="state" widget="statusbar" invisible="state != 'cancel'" statusbar_visible="scheduled,cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <field name="reference" readonly="1"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="pet"/>
+                            <field name="appointment_type"/>
+                        </group>
+                        <group>
+                            <field name="owner"/>
+                            <field name="appointment_date" string="Date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter" groups="!pet_care_management.group_pet_manager">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+<!--    <record id="view_pet_search" model="ir.ui.view">-->
+<!--        <field name="name">pet.pet.search</field>-->
+<!--        <field name="model">pet.pet</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Pets">-->
+<!--                <field name="name"/>-->
+<!--                <field name="pet_type"/>-->
+<!--                <field name="breed"/>-->
+<!--                <field name="sex"/>-->
+<!--                <field name="owner"/>-->
+<!--                <separator/>-->
+<!--                <group expand="1" string="Group By">-->
+<!--                    <filter string="Sex" name="sex" context="{'group_by':'sex'}"/>-->
+<!--                    <filter string="Owner" name="owner" context="{'group_by':'owner'}"/>-->
+<!--                    <filter string="Pet Type" name="pet_type" context="{'group_by':'pet_type'}"/>-->
+<!--                </group>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="action_appointments" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">pet.appointment</field>
+       <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new appointment
+            </p>
+        </field>
+<!--        <field name="view_ids" eval="[(5, 0, 0),-->
+<!--            (0, 0, {'view_mode': 'tree', 'view_id': ref('pet_care_management.view_pet_tree')}),-->
+<!--            (0, 0, {'view_mode': 'form', 'view_id': ref('pet_care_management.view_pet_form')})]"/>-->
+    </record>
+
+    <menuitem id="menu_appointments"
+              name="Appointments"
+              parent="menu_pet_care_root"
+              action="pet_care_management.action_appointments"
+              />
+</odoo>

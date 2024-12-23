@@ -1,4 +1,4 @@
-from odoo import api, fields, models, _
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError, AccessError
 
 
@@ -11,7 +11,8 @@ class PetOwners(models.Model):
         required=True,
         copy=False,
         readonly=True,
-        default=lambda self: _('New'))
+        default=lambda self: 'New'
+    )
     codice_fiscale = fields.Char(
         string="Codice Fiscale",
         size=16,
@@ -20,7 +21,7 @@ class PetOwners(models.Model):
         unique=True
     )
     pets = fields.One2many(
-        'pc.pet',
+        'pet.pet',
         'owner',
         string="Pets"
     )
@@ -35,6 +36,6 @@ class PetOwners(models.Model):
 
     @api.model
     def create(self, vals):
-        if 'reference' not in vals or vals['reference'] == _('New'):
-            vals['reference'] = self.env['ir.sequence'].next_by_code('res.partner') or _('New')
+        if 'reference' not in vals or vals['reference'] == 'New':
+            vals['reference'] = self.env['ir.sequence'].next_by_code('res.partner') or 'New'
         return super(PetOwners, self).create(vals)

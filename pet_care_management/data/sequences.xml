@@ -12,8 +12,16 @@
 
         <record id="seq_pet" model="ir.sequence">
             <field name="name">Pet Sequence</field>
-            <field name="code">pc.pet</field>
+            <field name="code">pet.pet</field>
             <field name="prefix">PT</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_pet_appointment" model="ir.sequence">
+            <field name="name">Pet Appointment Sequence</field>
+            <field name="code">pet.appointment</field>
+            <field name="prefix">AP</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>
