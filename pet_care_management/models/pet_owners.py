@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError, AccessError
 
@@ -25,10 +27,10 @@ class PetOwners(models.Model):
         'owner',
         string="Pets"
     )
+    is_client = fields.Boolean(string='Is Client', default=False)
 
     @api.constrains('codice_fiscale')
     def _check_codice_fiscale_unique(self):
-        print("Test")
         for rec in self:
             exists = self.search([('codice_fiscale', '=', rec.codice_fiscale), ('id', '!=', rec.id)], limit=1)
             if exists:
@@ -36,6 +38,7 @@ class PetOwners(models.Model):
 
     @api.model
     def create(self, vals):
-        if 'reference' not in vals or vals['reference'] == 'New':
+        pprint(vals)
+        if vals.get('is_client'):
             vals['reference'] = self.env['ir.sequence'].next_by_code('res.partner') or 'New'
         return super(PetOwners, self).create(vals)

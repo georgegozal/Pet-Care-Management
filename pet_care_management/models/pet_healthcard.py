@@ -31,6 +31,14 @@ class PetHealthCard(models.Model):
         'passport',
         string="Vaccinations"
     )
+    age = fields.Float(string='Age', related='pet.age')
+    pet_type = fields.Many2one(
+        comodel_name='pet.type',
+        string="Pet Type",
+        related='pet.pet_type'
+    )
+    breed = fields.Char(string='Breed', related='pet.breed')
+    sex = fields.Selection(string='Sex', related='pet.sex')
     microchip_id = fields.Char(string='Microchip ID')
     allergies = fields.Text(string='Alergies')
     note = fields.Text(string='Aditional Notes')

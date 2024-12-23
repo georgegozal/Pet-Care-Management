@@ -28,6 +28,7 @@
                     <group>
                         <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
                         <group string="Contact">
+                            <field name="is_client" invisible="1"/>
                             <field name="name" required="1"/>
                             <field name="codice_fiscale" required="1"/>
                             <field name="mobile" widget="phone" required="1"/>
@@ -65,12 +66,13 @@
         <field name="name">Pet Owners</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_client', '=', True)]</field>
+        <field name="context">{'default_is_client': True}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Add new pet owner
             </p>
         </field>
-        <field name="context">{}</field>
         <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('pet_care_management.view_pet_owner_tree')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('pet_care_management.view_pet_owner_form')})]"/>

@@ -20,12 +20,34 @@
         <field name="arch" type="xml">
             <form string="Pet Health Card">
                 <sheet>
+                    <div>
+                        <div class="oe_title">
+                            <field name="reference" readonly="1"/>
+                        </div>
+                        <br/>
+                        <div>
+                            <field name="image"
+                               widget='image'
+                               class="oe_avatar o_left"
+                               style="float: left; margin-right: 10px;"
+                               />
+                        </div>
+                    </div>
                     <group>
-                        <field name="pet"/>
-                        <field name="owner"/>
-                        <field name="microchip_id"/>
-                        <field name="allergies"/>
-                        <field name="note"/>
+                        <group>
+                            <field name="pet"/>
+                            <field name="age"/>
+                            <field name="pet_type" readonly="1"/>
+                            <field name="breed"/>
+                            <field name="sex"/>
+                            <field name="owner"/>
+                        </group>
+                        <group>
+                            <field name="microchip_id"/>
+                            <field name="allergies"/>
+                            <field name="note"/>
+                        </group>
+
                     </group>
                     <notebook>
                         <page string="Vaccinations">

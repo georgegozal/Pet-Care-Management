@@ -32,60 +32,57 @@
                            class="oe_avatar o_left"
                            style="float: left; margin-right: 10px;"
                            />
-                    <br/>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="age"/>
+                            <field name="pet_type"/>
+                            <field name="breed"/>
+                            <field name="sex"/>
+                            <field name="owner"
+                                   required="1"
+                                   readonly="context.get('make_readonly', False)"
+                            />
+                        </group>
+                    </group>
                         <notebook>
-                            <page string="Pet Info" name="pet_info" autofocus="autofocus">
-                                <group>
-                                    <field name="name" required="1"/>
-                                    <field name="age"/>
-                                    <field name="pet_type"/>
-                                    <field name="breed"/>
-                                    <field name="sex"/>
-                                    <field name="owner"
-                                           required="1"
-                                           readonly="context.get('make_readonly', False)"
-                                    />
-                                </group>
-                                    <notebook>
-                                        <page name="appointments" string="Appointments">
-                                            <field name="appointments">
-                                                <tree delete="0">
-                                                    <field name="reference"/>
-                                                    <field name="appointment_type"/>
-                                                    <field name="appointment_date"/>
-                                                    <field name="state"/>
-                                                    <button id="button_done"
-                                                            name="action_done"
-                                                            string="Done"
-                                                            class="btn-primary"
-                                                            type="object"
-                                                            confirm="Are you sure that you need to Done ?"
-                                                            invisible="state != 'scheduled'"/>
-                                                    <button id="button_cancel"
-                                                            name="action_cancel"
-                                                            string="Cancel"
-                                                            confirm="Are you sure that you need to cancel ?"
-                                                            type="object"
-                                                            invisible="state != 'scheduled'"/>
-                                                </tree>
-                                            </field>
-                                        </page>
-                                        <page string="Health Card"
-                                              name="health_card"
-                                              groups="pet_care_management.group_pet_doctor"
-                                        >
-                                            <field name="passport">
-                                                <tree delete="0">
-                                                    <field name="reference"/>
-                                                    <field name="owner"/>
-                                                    <field name="microchip_id"/>
-                                                    <field name="allergies"/>
-                                                    <field name="note"/>
-                                                    <field name="create_date" string="Date"/>
-                                                </tree>
-                                            </field>
-                                        </page>
-                                    </notebook>
+                            <page name="appointments" string="Appointments">
+                                <field name="appointments">
+                                    <tree delete="0">
+                                        <field name="reference"/>
+                                        <field name="appointment_type"/>
+                                        <field name="appointment_date"/>
+                                        <field name="state"/>
+                                        <button id="button_done"
+                                                name="action_done"
+                                                string="Done"
+                                                class="btn-primary"
+                                                type="object"
+                                                confirm="Are you sure that you need to Done ?"
+                                                invisible="state != 'scheduled'"/>
+                                        <button id="button_cancel"
+                                                name="action_cancel"
+                                                string="Cancel"
+                                                confirm="Are you sure that you need to cancel ?"
+                                                type="object"
+                                                invisible="state != 'scheduled'"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Health Card"
+                                  name="health_card"
+                                  groups="pet_care_management.group_pet_doctor"
+                            >
+                                <field name="passport">
+                                    <tree delete="0">
+                                        <field name="reference"/>
+                                        <field name="owner"/>
+                                        <field name="microchip_id"/>
+                                        <field name="allergies"/>
+                                        <field name="note"/>
+                                        <field name="create_date" string="Date"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
 
