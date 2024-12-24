@@ -54,6 +54,7 @@
                             <field name="vaccinations">
                                 <tree editable="bottom">
                                     <field name="name"/>
+                                    <field name="doctor"/>
                                     <field name="vaccination_type"/>
                                     <field name="vaccination_date"/>
                                     <field name="next_due_date"/>
@@ -82,5 +83,6 @@
               name="Health Card"
               parent="menu_pet_root"
               action="pet_care_management.action_health_card"
+              groups="pet_care_management.group_pet_doctor,base.group_system"
               />
 </odoo>

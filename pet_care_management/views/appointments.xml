@@ -9,6 +9,7 @@
                 <field name="reference"/>
                 <field name="pet"/>
                 <field name="owner"/>
+                <field name="pet_employee"/>
                 <field name="appointment_type"/>
                 <field name="appointment_date"/>
                 <field name="state"/>
@@ -46,6 +47,7 @@
                         <group>
                             <field name="pet"/>
                             <field name="appointment_type"/>
+                            <field name="pet_employee"/>
                         </group>
                         <group>
                             <field name="owner"/>
@@ -60,6 +62,7 @@
             </form>
         </field>
     </record>
+
 <!--    <record id="view_pet_search" model="ir.ui.view">-->
 <!--        <field name="name">pet.pet.search</field>-->
 <!--        <field name="model">pet.pet</field>-->
@@ -80,23 +83,42 @@
 <!--        </field>-->
 <!--    </record>-->
 
-    <record id="action_appointments" model="ir.actions.act_window">
+    <record id="action_appointments_manager" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="res_model">pet.appointment</field>
-       <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Add new appointment
             </p>
         </field>
-<!--        <field name="view_ids" eval="[(5, 0, 0),-->
-<!--            (0, 0, {'view_mode': 'tree', 'view_id': ref('pet_care_management.view_pet_tree')}),-->
-<!--            (0, 0, {'view_mode': 'form', 'view_id': ref('pet_care_management.view_pet_form')})]"/>-->
+    </record>
+
+    <menuitem id="menu_appointments_manager"
+              name="Appointments"
+              parent="menu_pet_care_root"
+              action="pet_care_management.action_appointments_manager"
+              groups="pet_care_management.group_pet_manager"
+              sequence="130"
+    />
+
+    <record id="action_appointments" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">pet.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('pet_employee', '=', uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new appointment
+            </p>
+        </field>
     </record>
 
     <menuitem id="menu_appointments"
               name="Appointments"
               parent="menu_pet_care_root"
               action="pet_care_management.action_appointments"
-              />
+              groups="pet_care_management.group_pet_doctor,pet_care_management.group_groomer"
+              sequence="130"
+    />
 </odoo>

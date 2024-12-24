@@ -73,6 +73,12 @@ class PetVaccination(models.Model):
     next_due_date = fields.Date(string="Next Due Date")
     note = fields.Text(string="Notes")
 
+    doctor = fields.Many2one(
+        'res.users',
+        string='Doctor',
+        domain=lambda self: [('groups_id', 'in', [self.env.ref('pet_care_management.group_pet_doctor').id])]
+    )
+
     @api.model
     def default_get(self, fields_list):
         res = super(PetVaccination, self).default_get(fields_list)

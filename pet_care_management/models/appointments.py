@@ -41,6 +41,18 @@ class PetAppointment(models.Model):
         tracking=True
     )
 
+    def _get_groups(self):
+        ids = [
+            self.env.ref('pet_care_management.group_pet_doctor').id,
+            self.env.ref('pet_care_management.group_groomer').id
+        ]
+        return ids
+
+    pet_employee = fields.Many2one(
+        'res.users',
+        string='Groomer/Doctor',
+        domain=lambda self: [('groups_id', 'in', self._get_groups())]
+    )
     # def default_get(self, fields):
     #     res = super(PetAppointment, self).default_get(fields)
     #     res['state'] = 'scheduled'

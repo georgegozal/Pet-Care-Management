@@ -41,6 +41,14 @@ class Pets(models.Model):
         string='Health Card',
         help="Health card (passport) records for this pet."
     )
+    readonly_values = fields.Boolean(compute='_compute_readonly_values')
+
+    def _compute_readonly_values(self):
+        for rec in self:
+            if self.env.user.has_group('pet_care_management.group_pet_manager'):
+                rec.readonly_values = True
+            else:
+                rec.readonly_values = False
 
     @api.model
     def create(self, vals):

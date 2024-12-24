@@ -34,11 +34,15 @@
                            />
                     <group>
                         <group>
+                            <field name="readonly_values" invisible="1"/>
                             <field name="name" required="1"/>
                             <field name="age"/>
-                            <field name="pet_type"/>
-                            <field name="breed"/>
-                            <field name="sex"/>
+                            <field name="pet_type"
+                                   readonly="readonly_values"/>
+                            <field name="breed"
+                                   readonly="breed not in ('', False, None)"/>
+                            <field name="sex"
+                                   readonly="sex not in ('', False, None)"/>
                             <field name="owner"
                                    required="1"
                                    readonly="context.get('make_readonly', False)"
@@ -71,7 +75,7 @@
                             </page>
                             <page string="Health Card"
                                   name="health_card"
-                                  groups="pet_care_management.group_pet_doctor"
+                                  groups="pet_care_management.group_pet_doctor,base.group_system"
                             >
                                 <field name="passport">
                                     <tree delete="0">
@@ -133,5 +137,6 @@
               name="Pets"
               parent="menu_pet_root"
               action="pet_care_management.action_pets"
+              sequence="100"
               />
 </odoo>

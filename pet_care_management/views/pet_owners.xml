@@ -82,5 +82,6 @@
               name="Pet Owners"
               parent="menu_pet_owner_root"
               action="pet_care_management.action_pet_owners"
+              sequence="110"
               />
 </odoo>

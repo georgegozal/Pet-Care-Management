@@ -13,6 +13,12 @@
         <field name="comment">Pet Doctor</field>
     </record>
 
+    <record id="group_groomer" model="res.groups">
+        <field name="name">Pet Groomer</field>
+        <field name="category_id" ref="pet_care_management.module_category_pc_groups"/>
+        <field name="comment">Pet Groomer</field>
+    </record>
+
     <record id="group_pet_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id" ref="pet_care_management.module_category_pc_groups"/>

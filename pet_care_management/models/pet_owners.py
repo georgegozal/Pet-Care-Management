@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError, UserError, AccessError
 
 
 class PetOwners(models.Model):
-    _inherit = ['res.partner']
+    _inherit = 'res.partner'
     _description = "Pet Owners"
     _order = 'id desc'
 
