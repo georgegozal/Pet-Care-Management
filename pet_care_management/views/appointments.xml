@@ -63,25 +63,34 @@
         </field>
     </record>
 
-<!--    <record id="view_pet_search" model="ir.ui.view">-->
-<!--        <field name="name">pet.pet.search</field>-->
-<!--        <field name="model">pet.pet</field>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <search string="Pets">-->
-<!--                <field name="name"/>-->
-<!--                <field name="pet_type"/>-->
-<!--                <field name="breed"/>-->
-<!--                <field name="sex"/>-->
-<!--                <field name="owner"/>-->
-<!--                <separator/>-->
-<!--                <group expand="1" string="Group By">-->
-<!--                    <filter string="Sex" name="sex" context="{'group_by':'sex'}"/>-->
-<!--                    <filter string="Owner" name="owner" context="{'group_by':'owner'}"/>-->
-<!--                    <filter string="Pet Type" name="pet_type" context="{'group_by':'pet_type'}"/>-->
-<!--                </group>-->
-<!--            </search>-->
-<!--        </field>-->
-<!--    </record>-->
+    <record id="view_appointment_search" model="ir.ui.view">
+        <field name="name">pet.appointment.search</field>
+        <field name="model">pet.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Appointments">
+                <field name="pet"/>
+                <field name="owner"/>
+                <field name="reference"/>
+                <field name="appointment_type"/>
+                <field name="state"/>
+                <separator/>
+                <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+                <filter string="Canceled" name="cancel" domain="[('state', '=', 'cancel')]"/>
+                <filter string="Scheduled" name="scheduled" domain="[('state', '=', 'scheduled')]"/>
+                <separator/>
+                <filter string="Vet Check-up" name="vet_checkup" domain="[('appointment_type', '=', 'vet_checkup')]"/>
+                <filter string="Grooming" name="rooming" domain="[('appointment_type', '=', 'grooming')]"/>
+                <filter string="Vaccination" name="vaccination" domain="[('appointment_type', '=', 'vaccination')]"/>
+                <filter string="Other" name="other" domain="[('appointment_type', '=', 'other')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="State" name="state" context="{'group_by':'state'}"/>
+                    <!--<filter string="Owner" name="owner" context="{'group_by':'owner'}"/>-->
+                    <filter string="Pet" name="pet" context="{'group_by':'pet'}"/>
+                    <filter string="Appointment Type" name="appointment_type" context="{'group_by':'appointment_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
     <record id="action_appointments_manager" model="ir.actions.act_window">
         <field name="name">Appointments</field>
