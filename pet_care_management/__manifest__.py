@@ -8,7 +8,8 @@
         'mail'
     ],
     "data": [
-        "security/ir.model.access.csv",
+        'security/ir.model.access.csv',
+        'cron/cron_check_appointments.xml',
         'data/sequences.xml',
         'views/groups.xml',
         'views/base.xml',

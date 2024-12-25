@@ -53,10 +53,6 @@ class PetAppointment(models.Model):
         string='Groomer/Doctor',
         domain=lambda self: [('groups_id', 'in', self._get_groups())]
     )
-    # def default_get(self, fields):
-    #     res = super(PetAppointment, self).default_get(fields)
-    #     res['state'] = 'scheduled'
-    #     return res
 
     @api.model
     def create(self, vals):

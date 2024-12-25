@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="cron_check_appointment_dates" model="ir.cron">
+            <field name="name">cron.pet.appointment</field>
+            <field name="model_id" ref="model_pet_appointment"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_check_appointment_date()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="datetime.now() + (datetime.now(pytz.timezone('Europe/Rome')).replace(hour=11, minute=0, second=0) - datetime.now(pytz.timezone('Europe/Rome'))) % timedelta(hours=24)"/>
+            <field eval="True" name="active"/>
+            <field name="priority">5</field>
+        </record>
+
+    </data>
+</odoo>
