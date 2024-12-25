@@ -24,3 +24,12 @@ A comprehensive pet care management system built on Odoo 17. This system helps m
       - By Appointment Date
     - Designed to facilitate quick filtering and grouping for efficient appointment management.
 - Cron Job: Every day, the system checks for appointments scheduled for the next day and prepares to send notifications (email/SMS) to the pet owners.
+
+### Technologies Used
+- Odoo 17: Framework for the system.
+- Python 3.11: Backend development.
+- PostgreSQL: Database backend.
+
+#### License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
