@@ -1,5 +1,8 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError, UserError, AccessError
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class Pets(models.Model):
@@ -55,6 +58,13 @@ class Pets(models.Model):
         if 'reference' not in vals or vals['reference'] == 'New':
             vals['reference'] = self.env['ir.sequence'].next_by_code('pet.pet') or 'New'
         return super(Pets, self).create(vals)
+
+    @api.depends('reference', 'name')
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f'<{rec.reference}>  {rec.name}'
+            # rec.display_name = f'{rec.name} . {rec.owner.name}'
+            _logger.info(f"\33[35;1m Display name computed for record {rec.id}: {rec.display_name} \33[0m")
 
 
 class PetType(models.Model):

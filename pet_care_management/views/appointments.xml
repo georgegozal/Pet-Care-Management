@@ -5,7 +5,11 @@
         <field name="name">pet.appointment.tree</field>
         <field name="model">pet.appointment</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree edit="0"  delete="0"
+                  decoration-info="state == 'scheduled'"
+                  decoration-success="state == 'done'"
+                  decoration-danger="state == 'cancel'"
+            >
                 <field name="reference"/>
                 <field name="pet"/>
                 <field name="owner"/>
@@ -85,8 +89,15 @@
                 <group expand="1" string="Group By">
                     <filter string="State" name="state" context="{'group_by':'state'}"/>
                     <!--<filter string="Owner" name="owner" context="{'group_by':'owner'}"/>-->
-                    <filter string="Pet" name="pet" context="{'group_by':'pet'}"/>
-                    <filter string="Appointment Type" name="appointment_type" context="{'group_by':'appointment_type'}"/>
+                    <filter string="Pet"
+                            name="pet"
+                            context="{'group_by':'pet'}"/>
+                    <filter string="Appointment Type"
+                            name="appointment_type"
+                            context="{'group_by':'appointment_type'}"/>
+                    <filter string="Appointment Date"
+                            name="appointment_date"
+                            context="{'group_by':'appointment_date'}"/>
                 </group>
             </search>
         </field>
