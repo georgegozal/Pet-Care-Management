@@ -31,5 +31,5 @@ A comprehensive pet care management system built on Odoo 17. This system helps m
 - PostgreSQL: Database backend.
 
 #### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
