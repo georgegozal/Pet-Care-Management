@@ -68,7 +68,8 @@ class PetAppointment(models.Model):
         return super().create(vals)
 
     def action_done(self):
-        self.state = 'done'
+        for rec in self:
+            rec.state = 'done'
 
     def action_cancel(self):
         self.state = 'cancel'

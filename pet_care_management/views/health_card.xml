@@ -35,7 +35,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="pet"/>
+                            <field name="pet" readonly="1"/>
                             <field name="age"/>
                             <field name="pet_type" readonly="1"/>
                             <field name="breed"/>
