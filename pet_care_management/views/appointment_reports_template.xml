@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+    <template id="report_template_pet_appointments">
+        <div class="page">
+            <p style="text-align: center;">
+                <b><font style="font-size: 18px;">Appointments</font></b>
+            </p>
+            <t t-set="timestamp" t-value="datetime.datetime.now().strftime('%d-%m-%Y')"/>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Appointment</th>
+                        <th>Appointment With</th>
+                        <th>Appointment State</th>
+                        <th>Appointment Date</th>
+                    </tr>
+                </thead>
+                <t t-if="docs">
+                    <t t-foreach="docs" t-as="doc">
+                        <p>Pet Name: <t t-esc="doc.name"/></p>
+                        <t t-foreach="doc.appointments" t-as="rec">
+                            <tr>
+                                <td><t t-esc="rec.reference"/></td>
+                                <td><t t-esc="rec.appointment_type"/></td>
+                                <td><t t-esc="rec.pet_employee.name"/></td>
+                                <td><t t-esc="rec.state"/></td>
+                                <td><t t-esc="rec.appointment_date.strftime('%d-%m-%Y %H:%M')"/></td>
+                            </tr>
+                        </t>
+                    </t>
+                </t>
+            </table>
+        </div>
+    </template>
+    </data>
+</odoo>

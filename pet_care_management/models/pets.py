@@ -83,6 +83,11 @@ class Pets(models.Model):
             'target': 'new',
         }
 
+    def get_appointments_report(self):
+        return self.env.ref(
+            'pet_care_management.report_pet_appointments'
+        ).with_context(dict(discard_logo_check=True)).report_action(self)
+
 
 class PetType(models.Model):
     _name = 'pet.type'

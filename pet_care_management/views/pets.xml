@@ -49,6 +49,11 @@
                             />
                         </group>
                     </group>
+                    <button id="btn_get_appointments_report"
+                            name="get_appointments_report"
+                            string="Appointments PDF Report"
+                            type="object"
+                            class="btn-primary"/>
                         <notebook>
                             <page name="appointments" string="Appointments">
                                 <field name="appointments">

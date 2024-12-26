@@ -32,6 +32,39 @@
         <field name="context">{'create': False, 'edit': False}</field>
     </record>
 
+    <record id="report_pet_appointments" model="ir.actions.report">
+        <field name="name">Appointments</field>
+        <field name="model">pet.pet</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">pet_care_management.report_template_pet_appointments</field>
+        <field name="report_file">pet_care_management.report_template_pet_appointments</field>
+        <field name="binding_model_id" ref="model_pet_pet"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_pet_appointments_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="article o_report_layout_standard">
+                        <div class="page">
+                            <t t-call="pet_care_management.report_template_pet_appointments"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+    </template>
+
+<!--    <report-->
+<!--        string="Appointments"-->
+<!--        id="report_pet_appointments"-->
+<!--        model="pet.pet"-->
+<!--        report_type="qweb-html"-->
+<!--        name="pet_care_management.report_pet_appointments_template"-->
+<!--        file="pet_care_management.report_pet_appointments_template"-->
+<!--        print_report_name="'Appointments'"-->
+<!--        menu="False"-->
+<!--    />-->
+
     <menuitem id="menu_reporting"
               name="Reporting"
               parent="menu_pet_care_root"
