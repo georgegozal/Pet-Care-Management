@@ -5,7 +5,7 @@
         <field name="name">pet.appointment.tree</field>
         <field name="model">pet.appointment</field>
         <field name="arch" type="xml">
-            <tree edit="0"  delete="0"
+            <tree edit="0"  delete="0" create="context.get('tree_create')"
                   decoration-info="state == 'scheduled'"
                   decoration-success="state == 'done'"
                   decoration-danger="state == 'cancel'"
@@ -49,7 +49,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="pet"/>
+                            <field name="pet" readonly="context.get('pet_readonly', False)"/>
                             <field name="appointment_type"/>
                             <field name="pet_employee"/>
                         </group>

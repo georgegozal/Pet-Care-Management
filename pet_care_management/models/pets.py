@@ -66,6 +66,23 @@ class Pets(models.Model):
             # rec.display_name = f'{rec.name} . {rec.owner.name}'
             _logger.info(f"\33[35;1m Display name computed for record {rec.id}: {rec.display_name} \33[0m")
 
+    def action_appointments(self):
+        create_appointment = self.env.context.get('create_appointment')
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create Appointments' if create_appointment else 'See Appointments',
+            'res_model': 'pet.appointment',
+            'domain': [('pet', '=', self.id)],
+            'context': {
+                'default_pet': self.id,
+                'pet_readonly': True,
+                'tree_create': 0
+            },
+            'view_type': 'form' if create_appointment else 'tree',
+            'view_mode': 'form' if create_appointment else 'tree',
+            'target': 'new',
+        }
+
 
 class PetType(models.Model):
     _name = 'pet.type'

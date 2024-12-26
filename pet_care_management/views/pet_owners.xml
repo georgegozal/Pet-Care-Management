@@ -49,6 +49,18 @@
                                     <field name="sex"/>
                                     <field name="pet_type"/>
                                     <field name="breed"/>
+                                    <button id="btn_create_appointument"
+                                            name="action_appointments"
+                                            type="object"
+                                            class="btn-primary"
+                                            context="{'create_appointment': True}"
+                                            string="Create Appointment"/>
+                                    <button id="btn_see_appointument"
+                                            name="action_appointments"
+                                            type="object"
+                                            class="btn-primary"
+                                            context="{'create_appointment': False, 'readonly': True}"
+                                            string="See Appointments"/>
                                 </tree>
                             </field>
                         </page>
@@ -85,3 +97,10 @@
               sequence="110"
               />
 </odoo>
+
+<!--        <record model="ir.actions.server" id="action_digital_limit_form">-->
+<!--            <field name="name">Digital Limit</field>-->
+<!--            <field name="model_id" ref="model_sc_digital_limit_form"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">action = model.open_form()</field>-->
+<!--        </record>-->
