@@ -84,9 +84,12 @@ class Pets(models.Model):
         }
 
     def get_appointments_report(self):
-        return self.env.ref(
-            'pet_care_management.report_pet_appointments'
-        ).with_context(dict(discard_logo_check=True)).report_action(self)
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/report/pdf/pet_care_management.report_template_pet_appointments/%s' % self.id,
+            'target': 'new',
+        }
 
 
 class PetType(models.Model):
