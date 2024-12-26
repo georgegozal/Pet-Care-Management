@@ -62,7 +62,7 @@ class Pets(models.Model):
     @api.depends('reference', 'name')
     def _compute_display_name(self):
         for rec in self:
-            rec.display_name = f'<{rec.reference}>  {rec.name}'
+            rec.display_name = f'{rec.reference} - {rec.name}'
             # rec.display_name = f'{rec.name} . {rec.owner.name}'
             _logger.info(f"\33[35;1m Display name computed for record {rec.id}: {rec.display_name} \33[0m")
 

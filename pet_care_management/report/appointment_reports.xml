@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_appointment_pivot" model="ir.ui.view">
+        <field name="name">pet.appointment.pivot</field>
+        <field name="model">pet.appointment</field>
+        <field name="arch" type="xml">
+            <pivot string="Appointment Analysis">
+                <field name="appointment_type" type="col"/>
+                <field name="appointment_date" interval="month" type="row"/>
+                <field name="pet_employee" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_appointment_graph" model="ir.ui.view">
+        <field name="name">pet.appointment.graph</field>
+        <field name="model">pet.appointment</field>
+        <field name="arch" type="xml">
+            <graph string="Appointment Trends" type="bar">
+                <field name="appointment_date" interval="month"/>
+                <field name="id" type="measure"/>
+                <field name="state" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_pet_appointment_reporting" model="ir.actions.act_window">
+        <field name="name">Appointment Reporting</field>
+        <field name="res_model">pet.appointment</field>
+        <field name="view_mode">pivot,graph,tree</field>
+        <field name="search_view_id" ref="view_appointment_search"/>
+        <field name="context">{'create': False, 'edit': False}</field>
+    </record>
+
+    <menuitem id="menu_reporting"
+              name="Reporting"
+              parent="menu_pet_care_root"
+              action="action_pet_appointment_reporting"
+              sequence="40"/>
+</odoo>

@@ -9,10 +9,13 @@
     <menuitem id="menu_pet_root"
               name="Pets"
               parent="menu_pet_care_root"
+              sequence="10"
               />
 
     <menuitem id="menu_pet_owner_root"
               name="Pet Owner"
               parent="menu_pet_care_root"
+              sequence="20"
               />
+
 </odoo>

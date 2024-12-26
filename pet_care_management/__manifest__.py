@@ -9,9 +9,13 @@
     ],
     "data": [
         'security/ir.model.access.csv',
+        'security/groups.xml',
+
+        'report/appointment_reports.xml',
+
         'cron/cron_check_appointments.xml',
         'data/sequences.xml',
-        'views/groups.xml',
+
         'views/base.xml',
         'views/pets.xml',
         'views/pet_owners.xml',

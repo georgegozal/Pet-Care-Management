@@ -98,6 +98,8 @@
                     <filter string="Appointment Date"
                             name="appointment_date"
                             context="{'group_by':'appointment_date'}"/>
+<!--                    <field name="appointment_date" filter_domain="[('appointment_date', '>=', context_today())]"/>-->
+
                 </group>
             </search>
         </field>
@@ -139,6 +141,6 @@
               parent="menu_pet_care_root"
               action="pet_care_management.action_appointments"
               groups="pet_care_management.group_pet_doctor,pet_care_management.group_groomer"
-              sequence="130"
+              sequence="30"
     />
 </odoo>
