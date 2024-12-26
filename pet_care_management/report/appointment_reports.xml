@@ -19,7 +19,7 @@
             <graph string="Appointment Trends" type="bar">
                 <field name="appointment_date" interval="month"/>
                 <field name="id" type="measure"/>
-                <field name="state" type="col"/>
+                <field name="appointment_type" type="col"/>
             </graph>
         </field>
     </record>
