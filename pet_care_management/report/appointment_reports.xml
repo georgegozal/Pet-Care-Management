@@ -54,17 +54,6 @@
             </t>
     </template>
 
-<!--    <report-->
-<!--        string="Appointments"-->
-<!--        id="report_pet_appointments"-->
-<!--        model="pet.pet"-->
-<!--        report_type="qweb-html"-->
-<!--        name="pet_care_management.report_pet_appointments_template"-->
-<!--        file="pet_care_management.report_pet_appointments_template"-->
-<!--        print_report_name="'Appointments'"-->
-<!--        menu="False"-->
-<!--    />-->
-
     <menuitem id="menu_reporting"
               name="Reporting"
               parent="menu_pet_care_root"

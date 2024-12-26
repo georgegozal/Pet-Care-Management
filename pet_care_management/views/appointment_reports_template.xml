@@ -2,36 +2,87 @@
 <odoo>
     <data>
     <template id="report_template_pet_appointments">
+        <style>
+            .table-bordered {
+                border-collapse: collapse;
+                width: 90%;
+            }
+            .table-bordered tr {
+                border: 1px solid blue;
+            }
+            .center {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            img {
+                margin-left: 5%;
+            }
+            .table-bordered th, .table-bordered td {
+                border: 1px solid black;
+                padding: 8px;
+            }
+        </style>
         <div class="page">
-            <p style="text-align: center;">
-                <b><font style="font-size: 18px;">Appointments</font></b>
-            </p>
-            <t t-set="timestamp" t-value="datetime.datetime.now().strftime('%d-%m-%Y')"/>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Reference</th>
-                        <th>Appointment</th>
-                        <th>Appointment With</th>
-                        <th>Appointment State</th>
-                        <th>Appointment Date</th>
-                    </tr>
-                </thead>
-                <t t-if="docs">
-                    <t t-foreach="docs" t-as="doc">
-                        <p>Pet Name: <t t-esc="doc.name"/></p>
-                        <t t-foreach="doc.appointments" t-as="rec">
-                            <tr>
-                                <td><t t-esc="rec.reference"/></td>
-                                <td><t t-esc="rec.appointment_type"/></td>
-                                <td><t t-esc="rec.pet_employee.name"/></td>
-                                <td><t t-esc="rec.state"/></td>
-                                <td><t t-esc="rec.appointment_date.strftime('%d-%m-%Y %H:%M')"/></td>
-                            </tr>
-                        </t>
-                    </t>
+            <t t-if="docs">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div style="display: flex; align-items: flex-start;">
+                                <!-- Image Container -->
+                                <div style="margin-left: 5%;margin-top: 15px;">
+                                    <!-- Check if the image exists -->
+                                    <img t-if="doc.image"
+                                         t-att-src="image_data_uri(doc.image)"
+                                         class="oe_avatar o_left"
+                                         height="90" width="90"/>
+                                    <!-- Fallback to placeholder if no image -->
+                                    <img t-if="not doc.image"
+                                         t-att-src="'/web/static/src/img/placeholder.png'"
+                                         height="90" width="90"/>
+                                </div>
+                                <!-- Text Content -->
+                                <div style="margin-left: 2%">
+                                    <p>Pet Name: <t t-esc="doc.name"/></p>
+                                    <p>Pet Age: <t t-esc="doc.age"/></p>
+                                    <p>Pet Type: <t t-esc="doc.pet_type.name"/></p>
+                                </div>
+                                <div style="margin-left: 15px">
+                                    <p>Pet Name: <t t-esc="doc.owner.name"/></p>
+                                    <p>Pet Sex: <t t-esc="doc.sex"/></p>
+                                    <p>Breed: <t t-esc="doc.breed"/></p>
+                                </div>
+                            </div>
+                        </div>
+                        <t t-set="timestamp" t-value="datetime.datetime.now().strftime('%d-%m-%Y')"/>
+
+                        <p style="text-align: center;">
+                            <b><font style="font-size: 18px;">Appointments</font></b>
+                        </p>
+                        <table class="table table-bordered center">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Appointment</th>
+                                    <th>Appointment With</th>
+                                    <th>Appointment State</th>
+                                    <th>Appointment Date</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="doc.appointments" t-as="rec">
+                                <tbody>
+                                    <tr>
+                                        <td><t t-esc="rec.reference"/></td>
+                                        <td><t t-esc="rec.appointment_type"/></td>
+                                        <td><t t-esc="rec.pet_employee.name"/></td>
+                                        <td><t t-esc="rec.state"/></td>
+                                        <td><t t-esc="rec.appointment_date.strftime('%d-%m-%Y %H:%M')"/></td>
+                                    </tr>
+                                </tbody>
+                            </t>
+                        </table>
+                    </div>
                 </t>
-            </table>
+            </t>
         </div>
     </template>
     </data>
