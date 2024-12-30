@@ -76,7 +76,7 @@ class Pets(models.Model):
             'context': {
                 'default_pet': self.id,
                 'pet_readonly': True,
-                'tree_create': 0
+                'create': True if create_appointment else False
             },
             'view_type': 'form' if create_appointment else 'tree',
             'view_mode': 'form' if create_appointment else 'tree',
