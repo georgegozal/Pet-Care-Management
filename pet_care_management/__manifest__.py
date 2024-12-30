@@ -14,6 +14,8 @@
         'cron/cron_check_appointments.xml',
         'data/sequences.xml',
 
+        'wizard/appointments.xml',
+
         'views/base.xml',
         'views/pets.xml',
         'views/pet_owners.xml',

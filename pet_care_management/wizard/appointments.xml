@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_create_appointment_wizard_form" model="ir.ui.view">
+        <field name="name">pet.appointment.wizard.form</field>
+        <field name="model">pet.appointment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create New Appointment">
+                <group>
+                    <field name="pet" readonly="1"/>
+                    <field name="appointment_type"/>
+                    <field name="appointment_date"/>
+                    <field name="pet_employee"/>
+                </group>
+                <footer>
+                    <button name="create_appointment_wizard"
+                            type="object"
+                            string="Create"
+                            class="btn-primary"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_appointment_wizard" model="ir.actions.act_window">
+        <field name="name">Create Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pet.appointment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_create_appointment_wizard_form"/>
+        <field name="context">{'default_pet': active_id}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

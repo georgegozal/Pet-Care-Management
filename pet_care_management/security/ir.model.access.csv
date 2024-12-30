@@ -14,3 +14,5 @@ access_pet_passport_manager,pet_passport_manager,model_pet_passport,pet_care_man
 
 access_pet_vaccination_doctor,pet_vaccination_doctor,model_pet_vaccination,pet_care_management.group_pet_doctor,1,1,1,0
 access_pet_vaccination_manager,pet_vaccination_manager,model_pet_vaccination,pet_care_management.group_pet_manager,1,0,0,0
+
+access_pet.appointment.wizard,pet.appointment.wizard,model_pet_appointment_wizard,,1,1,1,0

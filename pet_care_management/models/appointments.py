@@ -42,11 +42,10 @@ class PetAppointment(models.Model):
     )
 
     def _get_groups(self):
-        ids = [
+        return  [
             self.env.ref('pet_care_management.group_pet_doctor').id,
             self.env.ref('pet_care_management.group_groomer').id
         ]
-        return ids
 
     pet_employee = fields.Many2one(
         'res.users',

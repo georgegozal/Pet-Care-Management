@@ -22,6 +22,11 @@
         <field name="model">pet.pet</field>
         <field name="arch" type="xml">
             <form>
+                <style>
+                    .space-left {
+                        margin-left: 10px !important;
+                    }
+                </style>
                 <sheet>
                     <div class="oe_title">
                         <field name="reference" readonly="1"/>
@@ -54,7 +59,13 @@
                             string="Appointments PDF Report"
                             type="object"
                             class="btn-primary"/>
-                        <notebook>
+
+                    <button id="btn_create_appointment_wizard"
+                            name="%(pet_care_management.action_create_appointment_wizard)d"
+                            string="Create Appointment"
+                            type="action"
+                            class="btn-primary space-left"/>
+                    <notebook>
                             <page name="appointments" string="Appointments">
                                 <field name="appointments">
                                     <tree delete="0">
