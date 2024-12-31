@@ -22,8 +22,8 @@
         'views/appointments.xml',
         'views/health_card.xml',
         # 'views/vaccination.xml'
-        'views/appointment_reports_template.xml',
 
+        'report/appointment_reports_template.xml',
         'report/appointment_reports.xml',
     ],
     'qweb': [],

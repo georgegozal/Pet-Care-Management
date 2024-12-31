@@ -33,6 +33,7 @@ class PetAppointment(models.Model):
         ('vaccination', 'Vaccination'),
         ('other', 'Other')
     ], string="Appointment Type", required=True)
+
     state = fields.Selection([
         ('scheduled', 'Scheduled'),
         ('done', 'Done'),
