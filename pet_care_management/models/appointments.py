@@ -70,6 +70,8 @@ class PetAppointment(models.Model):
     def action_done(self):
         for rec in self:
             rec.state = 'done'
+            return True 
 
     def action_cancel(self):
         self.state = 'cancel'
+        return True

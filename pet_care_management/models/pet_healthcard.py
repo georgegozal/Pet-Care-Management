@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
+from datetime import datetime, timedelta
 
 
 class PetHealthCard(models.Model):
@@ -84,4 +85,12 @@ class PetVaccination(models.Model):
         res = super(PetVaccination, self).default_get(fields_list)
         if not res.get("vaccination_date"):
             res['vaccination_date'] = fields.Date.today()
+        print(type(res['vaccination_date']), res['vaccination_date'])
+        res['next_due_date'] = res['vaccination_date'] + timedelta(days=365)
         return res
+
+    @api.onchange('vaccination_date')
+    def _onchange_vaccination_date(self):
+        for rec in self:
+            if rec.vaccination_date:
+                rec.next_due_date = rec.vaccination_date + timedelta(days=365)

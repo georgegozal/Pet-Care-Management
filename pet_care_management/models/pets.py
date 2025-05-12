@@ -26,6 +26,7 @@ class Pets(models.Model):
     image = fields.Binary("Image Binary", attachment=True)
 
     pet_type = fields.Many2one('pet.type', string="Pet Type")
+    # TODO: i have to move this into pet.type
     breed = fields.Char(string="Breed", tracking=True)
     sex = fields.Selection([
         ('male', 'Male'),
@@ -84,12 +85,13 @@ class Pets(models.Model):
         }
 
     def get_appointments_report(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_url',
-            'url': '/report/pdf/pet_care_management.report_template_pet_appointments/%s' % self.id,
-            'target': 'new',
-        }
+        # self.ensure_one()
+        # return {
+        #     'type': 'ir.actions.act_url',
+        #     'url': '/report/pdf/pet_care_management.report_template_pet_appointments/%s' % self.id,
+        #     'target': 'new',
+        # }
+        return self.env.ref('pet_care_management.action_report_pet_appointments').report_action(self)
 
 
 class PetType(models.Model):
