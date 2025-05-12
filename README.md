@@ -43,11 +43,12 @@ A comprehensive pet care management system built on **Odoo 17**. Designed for ve
 
 ---
 
-## 📸 Screenshots / Demo
-<img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/pet_form.jpg" width="200" >
-<img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/appointment_form.jpg" width="200" >
-<img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/invoice_form.jpg" width="200" >
-
+## 📸 Screenshots
+<p align='center'>
+  <img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/pet_form.jpg" width="200" >
+  <img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/appointment_form.jpg" width="200" >
+  <img src="https://github.com/georgegozal/Pet-Care-Management/blob/main/pet_care_management/static/src/image/invoice_form.jpg" width="200" >
+</p>
 
 ---
 
