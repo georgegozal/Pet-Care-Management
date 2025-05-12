@@ -66,6 +66,26 @@
                             <field name="appointment_date" string="Date"/>
                         </group>
                     </group>
+                    <!-- აქ ჩასვავ appointment lines -->
+                    <notebook>
+                        <page string="Services">
+                            <field name="appointment_line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <!-- Invoice Button -->
+                    <button name="action_create_invoice"
+                            string="Create Invoice"
+                            type="object"
+                            class="btn-primary"/>
+<!--                            invisible="invoice_id != False"/>-->
+                    <field name="invoice_id" invisible="1"/>
                 </sheet>
                 <div class="oe_chatter" groups="pet_care_management.group_pet_manager">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -158,4 +178,5 @@
               groups="pet_care_management.group_pet_doctor,pet_care_management.group_groomer"
               sequence="30"
     />
+
 </odoo>

@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 
@@ -75,3 +77,44 @@ class PetAppointment(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
         return True
+
+    appointment_line_ids = fields.One2many(
+        'pet.appointment.line',
+        'appointment_id',
+        string='Services'
+    )
+    invoice_id = fields.Many2one('account.move', string='Invoice', readonly=True)
+
+    def action_create_invoice(self):
+        for rec in self:
+            if not rec.owner:
+                raise UserError("Owner must be set to create an invoice.")
+
+            invoice_vals = {
+                'partner_id': rec.owner.id,
+                'move_type': 'out_invoice',
+                'invoice_line_ids': [],
+            }
+            lines = []
+            for line in rec.appointment_line_ids:
+                lines.append((0, 0, {
+                    'product_id': line.product_id.id,
+                    'quantity': line.quantity,
+                    'price_unit': line.price_unit,
+                }))
+
+            invoice_vals['invoice_line_ids'] = lines
+
+            invoice = self.env['account.move'].create(invoice_vals)
+            rec.invoice_id = invoice.id
+
+            return {
+                'type': 'ir.actions.act_window',
+                'name': f'Invoice #{invoice.name}' if invoice else 'Invoice',
+                'res_model': 'account.move',
+                'view_mode': 'form',
+                'view_id': self.env.ref('account.view_move_form').id,
+                'res_id': invoice.id if invoice else False,
+                'target': 'current',
+                'context': "{'move_type':'out_invoice'}",
+            }
