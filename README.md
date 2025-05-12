@@ -1,35 +1,52 @@
-### Pet Care Management System
-A comprehensive pet care management system built on Odoo 17. This system helps manage pet-related appointments, pet health records, pet owners, and more. It's designed to automate and streamline the workflow for pet care professionals.
+# Pet Care Management System (Odoo 17)
 
-#### Features
-- Pet Management: Track pet information such as breed, type, and health records.
-- Owner Management: Manage pet owners, contact details, and health-related information.
-- Appointment Scheduling: Schedule and manage appointments for pets with automatic email notifications.
-- Health Records: Track pets' health data including vaccinations, medical history, and treatments.
-- Role-Based Access Control:
-  - Menus, views (tree and form), and CRUD operations (create, update, delete) are controlled based on user roles.
-  - For example:
-    - Pet Doctor: Access only menus relevant to their role and can view or manage appointments assigned to them.
-    - Pet Manager: Access all menus and manage all appointments.
-    - Pet Owner: View only their pets' information and appointments.
-    - Groomer: Access menus and views specific to grooming appointments and manage only their assigned grooming tasks.
-- Advanced Appointment Search View:
-  - A customizable search view with the following features:
-    - Filters for appointment state (e.g., Done, Canceled, Scheduled).
-    - Filters for appointment types (e.g., Vet Check-up, Grooming, Vaccination, Other).
-    - Grouping options, including:
-      - By State
-      - By Pet
-      - By Appointment Type
-      - By Appointment Date
-    - Designed to facilitate quick filtering and grouping for efficient appointment management.
-- Cron Job: Every day, the system checks for appointments scheduled for the next day and prepares to send notifications (email/SMS) to the pet owners.
+A comprehensive pet care management system built on **Odoo 17**. Designed for veterinary clinics, grooming salons, and pet care businesses to manage pets, appointments, health records, and finances in a streamlined workflow.
 
-### Technologies Used
-- Odoo 17: Framework for the system.
-- Python 3.11: Backend development.
-- PostgreSQL: Database backend.
+---
 
-#### License
+## 🚀 Features
+
+### 🐾 Pet & Owner Management
+- Pet profiles: breed, age, species, and health details
+- Owner records: contact information and relationship to pets
+
+### 📅 Appointment Scheduling
+- Create, view, and manage pet appointments
+- Appointment lines with selectable services (linked to products)
+- Appointment type selection (Grooming, Vet Check-Up, Vaccination, etc.)
+- Automated invoice generation from appointment lines
+
+### 💳 Invoicing & Accounting
+- Invoices are automatically created from appointments
+- Integrated with Odoo's accounting module (`account.move`)
+- Proper partner (owner) association on invoices
+
+### 🧑‍💼 Role-Based Access Control
+- **Pet Doctor**: View/manage medical appointments assigned to them
+- **Groomer**: Access grooming menus and tasks
+- **Pet Owner**: View only their pets and appointment history
+- **Pet Manager**: Full access to all appointments and pet records
+
+### 🔎 Smart Search View
+- Filter by appointment status, type, pet, and more
+- Group by date, pet, type, or status for fast data navigation
+
+### 🔁 Cron Job
+- Daily job that checks upcoming appointments and triggers notifications (email/SMS support ready)
+
+---
+
+## 🛠️ Technologies Used
+- **Odoo 17** (backend, frontend, ORM, views)
+- **Python 3.11**
+- **PostgreSQL** for data storage
+
+---
+
+## 📸 Screenshots / Demo
+> *You can add screenshots here or a link to a demo video.*
+
+---
+
+## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
