@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+     <data noupdate="0">
         <record id="product_category_pet_services" model="product.category">
             <field name="name">Pet Services</field>
         </record>
 
-        <record id="product_vet_checkup" model="product.product">
-            <field name="name">Vet Checkup</field>
+        <!-- Grooming -->
+        <record id="product_pet_grooming" model="product.product">
+            <field name="name">Grooming Service</field>
+            <field name="list_price">25.0</field>
             <field name="type">service</field>
-            <field name="list_price">50.0</field>
+            <field name="sale_ok" eval="True"/>
             <field name="categ_id" ref="product_category_pet_services"/>
-            <field name="sale_line_warn">no-message</field>
+        </record>
+
+        <!-- Vet Check-up -->
+        <record id="product_pet_vet_checkup" model="product.product">
+            <field name="name">Vet Check-up</field>
+            <field name="list_price">40.0</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="True"/>
+            <field name="categ_id" ref="product_category_pet_services"/>
+        </record>
+
+        <!-- Vaccination -->
+        <record id="product_pet_vaccination" model="product.product">
+            <field name="name">Vaccination</field>
+            <field name="list_price">30.0</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="True"/>
+            <field name="categ_id" ref="product_category_pet_services"/>
+        </record>
+
+        <!-- Other Service -->
+        <record id="product_pet_other" model="product.product">
+            <field name="name">Other Pet Service</field>
+            <field name="list_price">20.0</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="True"/>
+            <field name="categ_id" ref="product_category_pet_services"/>
         </record>
     </data>
 </odoo>

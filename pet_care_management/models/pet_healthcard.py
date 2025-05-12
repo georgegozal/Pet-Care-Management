@@ -85,7 +85,6 @@ class PetVaccination(models.Model):
         res = super(PetVaccination, self).default_get(fields_list)
         if not res.get("vaccination_date"):
             res['vaccination_date'] = fields.Date.today()
-        print(type(res['vaccination_date']), res['vaccination_date'])
         res['next_due_date'] = res['vaccination_date'] + timedelta(days=365)
         return res
 
